@@ -16,7 +16,8 @@ from virtualized hardware to Docker, or stick to KVM, for example.
 \section{Introduction}
 
 Virtualization was very important for the industry at the time of its invention in the mid-2000.
-Smart virtualization engines such as Linux-based QEMU, KVM, Xen and their Windows-based rival Hyper-V changed the IT industry forever,
+Smart virtualization engines such as Linux-based QEMU, KVM, Xen
+and their Windows-based rival Hyper-V changed the IT industry forever,
 sufficiently decreasing the need for dedicated and local hardware.
 
 This shift has made a cloud computing from abstract theory to the reality,
@@ -56,6 +57,7 @@ Virtualization is a technology of clear and safe dividing
 of existing hardware resources amongst the "host" operating system,
 which has a direct access to the hardware resources and where the virtualization program is started, and some of the "guest" operating systems,
 which lifecycle is maintained and supervised by the abovementioned software.
+
 With the invention of the virtualization first as software solution,
 it has become possible for one server to serve multiple users at a time significantly decreasing stall times and the need for excessive hardware.
 Moreover, it became possible to sell the unused
@@ -151,16 +153,24 @@ environments.
 
 
 \section{Conclusions}
-This paragraph will end the body of this sample document.
-Remember that you might still have Acknowledgments or
-Appendices; brief samples of these
-follow.  There is still the Bibliography to deal with; and
-we will make a disclaimer about that here: with the exception
-of the reference to the \LaTeX\ book, the citations in
-this paper are to articles which have nothing to
-do with the present subject and are used as
-examples only.
-%\end{document}  % This is where a 'short' article might terminate
+
+As a result of this research work, it became clear to us that, first of all,
+the approach of container virtualization or containerization
+is the future of software deployment, because it not only reduces complexity of
+different types of infrastructure like content delivery network,
+but also significantly reduces server load, significantly
+increases security of the deployed application,
+because the possibly infected software cannot
+escape its file system layer and has no direct access
+to the operating system where the docker process is running, and is
+especially usable for shipping software images to the different types of customers,
+from the most inexperienced ones to hardcore professionals.
+
+The approach has drawbacks, too, mainly
+because it is relatively new to the market,
+and it is pretty hard for industry to find
+a sufficient amount of system administrators or special
+administering software qualified to support advanced docker infrastructures.
 
 
 
