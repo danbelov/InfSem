@@ -11,9 +11,9 @@
 %%%     supported       = "yes",
 %%%     docstring       = "This BibTeX database file contains 'bibdata' entries
 %%%                        that 'match' the examples provided in the Specifications Document
-%%%                        AND, also, 'legacy'-type bibs. It should assist authors in 
+%%%                        AND, also, 'legacy'-type bibs. It should assist authors in
 %%%                        choosing the 'correct' at-bibtype and necessary bib-fields
-%%%                        so as to obtain the appropriate ACM Reference Format output. 
+%%%                        so as to obtain the appropriate ACM Reference Format output.
 %%%			   It also contains many 'Standard Abbreviations'. "
 %%%  }
 %%% ====================================================================
@@ -617,24 +617,59 @@ year = {2003},
   month = 	 "",
 }
 
+@online{CGroupsDefinition,
+  author =       "RedHat Customer Portal",
+  year =         "2016",
+  title =        "What is a container",
+  url =          "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/ch01",
+  month = 	 dec,
+  lastaccessed = "October 21, 2017",
+}
 
-@online{Thornburg01,
-  author =       "Harry Thornburg",
-  year =         "2001",
-  title =        "Introduction to Bayesian Statistics",
-  url =           "http://ccrma.stanford.edu/~jos/bayes/bayes.html",
-  month = 	 mar,
-  lastaccessed = "March 2, 2005",
+@online{ParavirtualizationDefinition,
+  author =       "Xen Project",
+  year =         "2015",
+  title =        "What is a container",
+  url =           "https://wiki.xen.org/wiki/Paravirtualization_(PV)",
+  month = 	 apr,
+  lastaccessed = "October 21, 2017",
+}
+
+@online{DockerDefinition,
+  author =       "Docker Incorporated",
+  year =         "2011",
+  title =        "What is a container",
+  url =           "https://www.docker.com/what-container",
+  month = 	 oct,
+  lastaccessed = "October 21, 2017",
+}
+
+@online{TraditionalAndVirtualInfra,
+  author =       "TechTarget",
+  year =         "2014",
+  title =        "Traditional and virtual infrastructure",
+  url =           "https://cdn-images-1.medium.com/max/1200/1*L9hWIKdhkbeawViImDeecA.jpeg",
+  month = 	 jan,
+  lastaccessed = "October 21, 2017",
+}
+
+@online{SELinuxDef,
+  author =       "SELinux Project",
+  year =         "2010",
+  title =        "What is SELinux",
+  url =           "https://selinuxproject.org/page/Main_Page",
+  month = 	 feb,
+  lastaccessed = "October 23, 2017",
 }
 
 
-@online{Ablamowicz07,
-  author =       "Rafal Ablamowicz and Bertfried Fauser",
-  year =         "2007",
-  title =        "CLIFFORD: a Maple 11 Package for Clifford Algebra Computations, version 11",
-  url =          "http://math.tntech.edu/rafal/cliff11/index.html",
-  lastaccessed = "February 28, 2008",
-}
+
+
+
+
+
+
+
 
 
 @misc{Poker06,
@@ -872,7 +907,7 @@ year = {2003},
 % Also -- the title is NOT being output in italics !!! Arrrrgh! - I fixed it. :-)
 
 
-%%% compare with 'old' 
+%%% compare with 'old'
 %%% atsign-Phdthesis{Clarkson85,
 %%%  author =       "Kenneth L. Clarkson",
 %%%  year =         "1985",
@@ -1201,7 +1236,7 @@ year = {2003},
  acmid = {1243382},
  publisher = {Academic Press Ltd.},
  address = {London, UK, UK},
-} 
+}
 
 % incol due to presence of booktitle
 @incollection{Lee:1978:TQA:800025.1198348,
@@ -1233,7 +1268,7 @@ year = {2003},
  acmid = {1241518},
  publisher = {Yourdon Press},
  address = {Upper Saddle River, NJ, USA},
-} 
+}
 
 % incol due to booktitle
 @incollection{Wenzel:1992:TVA:146022.146089,
@@ -1264,7 +1299,7 @@ year = {2003},
  acmid = {54911},
  publisher = {John Wiley \& Sons, Inc.},
  address = {New York, NY, USA},
-} 
+}
 
 @book{McCracken:1990:SSC:575315,
  author = {McCracken, Daniel D. and Golden, Donald G.},
@@ -1273,7 +1308,7 @@ year = {2003},
  isbn = {0471514071},
  publisher = {John Wiley \& Sons, Inc.},
  address = {New York, NY, USA},
-} 
+}
 
 % Let's include Boris / BBeeton entries  (multi-volume works)
 
@@ -1283,7 +1318,7 @@ year = {2003},
     SERIES = {Grundlehren der Mathematischen Wissenschaften [Fundamental
               Principles of Mathematical Sciences]},
     VOLUME = {275},
-      NOTE = {Pseudodifferential operators},  
+      NOTE = {Pseudodifferential operators},
 PUBLISHER = {Springer-Verlag},
    ADDRESS = {Berlin, Germany},
       YEAR = {1985},
@@ -1300,7 +1335,7 @@ MRREVIEWER = {Min You Qi},
     SERIES = {Grundlehren der Mathematischen Wissenschaften [Fundamental
               Principles of Mathematical Sciences]},
     VOLUME = {275},
-      NOTE = {Fourier integral operators},  
+      NOTE = {Fourier integral operators},
 PUBLISHER = {Springer-Verlag},
    ADDRESS = {Berlin, Germany},
       YEAR = {1985},
@@ -1319,7 +1354,7 @@ MRREVIEWER = {Min You Qi},
   title         = {A multi-radio unification protocol for {IEEE} 802.11 wireless networks},
   booktitle     = {Proceedings of the IEEE 1st International Conference on Broadnets Networks (BroadNets'04)},
   publisher     = "IEEE",
-  address       = "Los Alamitos, CA",		  
+  address       = "Los Alamitos, CA",
   year          = {2004},
   pages         = "210--217"
 }
@@ -1349,7 +1384,7 @@ MRREVIEWER = {Min You Qi},
   title         = {{SSCH}: Slotted Seeded Channel Hopping for Capacity Improvement in {IEEE} 802.11 Ad-Hoc Wireless Networks},
   booktitle     = {Proceeding of the 10th International Conference on Mobile Computing and Networking (MobiCom'04)},
   publisher     = "ACM",
-  address       = "New York, NY",		  
+  address       = "New York, NY",
   year          = {2004},
   pages         = "112--117"
 }
@@ -1368,7 +1403,7 @@ MRREVIEWER = {Min You Qi},
   volume        = 37,
   number        = "8 (Special Issue on Sensor Networks)",
   publisher     = "IEEE",
-  address       = "Los Alamitos, CA",		  
+  address       = "Los Alamitos, CA",
   year          = {2004},
   pages         = "41--49"
 }
@@ -1386,7 +1421,7 @@ MRREVIEWER = {Min You Qi},
     booktitle   = {Network Architectures},
     editor      = {G. Whitcomb and P. Neece},
     publisher   = "Keleuven Press",
-    address     = "Dayton, OH",		  
+    address     = "Dayton, OH",
     year        = {2007},
     pages       = "322--328",
     eprint      = "960935712",
@@ -1406,7 +1441,7 @@ MRREVIEWER = {Min You Qi},
   author        = {G. Zhou and J. Lu and C.-Y. Wan and M. D. Yarvis and J. A. Stankovic},
   title         = {Body Sensor Networks},
   publisher     = "MIT Press",
-  address       = "Cambridge, MA",		  
+  address       = "Cambridge, MA",
   year          = {2008}
 }
 
@@ -1513,7 +1548,7 @@ booktitle = "Proceedings of the 7th Annual Symposium on Principles of
 month = jan,
 year = 1980,
 publisher = "ACM",
-address = "New York",		  
+address = "New York",
 pages = "24--31"}
 
 @article{Zhou:2010:MMS:1721695.1721705,
@@ -1582,7 +1617,7 @@ pages = "24--31"}
 	BOOKTITLE = "TeX90 Conference Proceedings",
 	PAGES = "84-89",
 	ORGANIZATION = "TeX Users Group",
-	MONTH = "March", 
+	MONTH = "March",
 	YEAR = {1991}	}
 
 @ARTICLE{herlihy:methodology,
@@ -1619,4 +1654,3 @@ pages = "24--31"}
   year =	 2015,
   note =	 {\url{http://www.ctan.org/pkg/amsthm}}
 }
-
