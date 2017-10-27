@@ -187,6 +187,26 @@ library written in Go programming language
 which acts as an intermediary between apps packaged
 in the container and the Linux kernel.
 
+Exactly like paravirtualization, at the time of its market show up
+it required special builds of linux kernel, which provided the Docker core with
+functionality later. After its broad adoption by the industry, these features
+were included in all standard linux kernel builds.
+
+Because of that, most of the current Docker function can now be simulated
+using these advanced features without installation of additional components.
+
+As can be seen in the picture *, the Docker consists
+of continous process dockerd, which then supervises other
+components using REST\footnote{Representational state transfer}
+and gets messages back from them. Docker has its
+own CLI\footnote{Console Line Interface} which can be used by the local
+user, but there is even more than that:
+usage of REST as one of the most influencial currently implemented
+standards in the Web gives many advantages to the Docker core making it possible
+not only to connect several engines into connecting networks,
+but also to provide reliable communication between several containers running on
+one image, as it is described later
+
 \begin{figure}
 \includegraphics[height=3in, width=3in]{dockerarch}
 \caption{Scheme of Docker architecture}
@@ -195,22 +215,42 @@ in the container and the Linux kernel.
 Without following advanced Linux kernel features,
 the development of Docker would not have been possible:
 
+\begin{figure}
+\includegraphics[height=3in, width=3in]{dockerLinuxKernel}
+\caption{Linux kernel features Docker containers take use of}
+\end{figure}
+
 control groups (named cgroups for the sake of simplicity) is
-Linux kernel feature which allows it to restrict
-each application to the specific set of resources, or allocate resources —
+a feature developed by Google
+for AOSP\footnote{Android open source project} and merged
+into the Linux kernel version 2.6.24\cite{CGroupsMerged}
+which allows the kernel to restrict
+each application to the specific set of resources or allocate them —
 such as CPU time, system memory, network bandwidth,
 or combinations of these resources — among user-defined groups
 of tasks (processes) running on a system.\cite{CGroupsDefinition}
 
+\begin{figure}
+\includegraphics[height=3in, width=3in]{dockerCGroups}
+\caption{Example of dividing resources between Docker containers using cgroups}
+\end{figure}
+
 SELinux - a special kernel extension, which adds advanced security features to
 the OS, mainly fine-grained file control, but can also be applied
 for the interprocess communication and network resources. \cite{SELinuxDef}
+
+\begin{figure}
+\includegraphics[height=3in, width=3in]{SELinux}
+\caption{SELinux architecture}
+\end{figure}
+
 This is one of the feature of the kernel, which has utter importance for Docker,
 because without it would not have been possible to isolate files or ports
 of the containers from the other containers trying to access this files,
 which in turn would have led to security issues.
-Docker employees have even described their software as being "Secure By Default"
-in their blog post \cite{SELinuxDockBlog}
+Docker employees have even described their software as being "Secure by Default"
+in their blog post \cite{SELinuxDockBlog} because of an advantageous
+usage of this technology
 
 namespaces -
 
@@ -296,19 +336,78 @@ wish to hide their images from the public access
 are not bound to the usage of Docker Inc. as their unique provider, that means
 no vendor lock is present.
 
-\subsubsection{Container interaction}
+\subsubsection{Docker on Windows}
 
 In case when there is more than one container
 instance running on the docker server, it can become increasingly difficult for
 to users to maintain them.
 
+\subsubsection{Container interaction}
+
+Because of an architecture and restrictions of Docker, it is only possible for
+one layer to pass messages to an another layer by using ports opened for them.
+In case when there is more than one container
+instance running on the Docker server, it can become increasingly difficult for
+to users to maintain them. And that is what orchestration, described in the next
+chapter, is for.
+
 \section{Orchestration}
 
 \subsection{Native ecosystem}
 
+
+
 \subsubsection{Docker Machine}
 
+With Docker Machine, one can install the Docker engine on virtualized
+hosts and manage them. One can use “Machine” to create Docker
+hosts on your local Operation System (Mac or Windows box), on your
+network, in your data center, or even on cloud Providers.
+One can start, stop, inspect and restart a managed host
+with the docker-machine commands, upgrade the Docker client/daemon, and
+even configure a Docker client to talk to your host. There are different
+benefits with Docker Machine. With Docker Machine, one can provision
+multiple remote Docker hosts on various flavours of Linux.
+Additionally, it is possible to run Docker on older Mac or Windows systems.
+Basically, Docker Machine is a tool for provisioning and
+managing hosts with Docker Engine on them.
+Docker Machine is mainly used for two broad use cases.
+
+If one works primarily on an older Mac or Windows that
+does not meet the requirements for the new Docker apps,
+Docker Machine is needed in order to “run Docker” locally.
+If one wants to provision Docker hosts on remote systems.
+If one wants an efficient way to provision multiple Docker hosts on a network,
+in the cloud or locally, Docker Machine is needed.
+Independently form the used Operating System, one can install
+Docker Machine on it and use the provisioned commands to manage
+large numbers of Docker hosts. It automatically creates hosts,
+installs Docker Engine on them and eventually
+configures the docker clients. In the end, each managed
+host(Machine) is the combination of a Docker host and a configured client.
+
 \subsubsection{Docker Swarm}
+
+Basically, Docker Swarm is a clustering tool for Docker Containers.
+Docker Swarm enables Users a straight forward opportunity,
+to merge multiple Docker hosts into a cluster.
+The behaviour of swarm is the same as a Docker-Daemon.
+Clustering is an important feature of container technologies,
+because it creates a cooperative group of systems.
+With that, one can provide redundancy. A Docker Swarm cluster also provides the
+ability to add or substract container iterations as computing demands change.
+A Swarm consist of a manager (also called Master) and
+as many slaves (also called workers) as wanted.
+The Swarm-Manager is responsible for the scheduling
+of containers on all slaves and is the primary
+interface to access on the resources of the cluster.
+Docker swarm load balancing
+With Swarm one can achieve greater performance and
+better usability of resources, since it uses
+scheduling capabilities to ensure sufficient resources for
+the containers inside the cluster. This technology ensures that containers
+are launched/run on systems with adequate resources, while maintaining
+necessary performance levels.
 
 \subsubsection{Docker Compose}
 
@@ -350,16 +449,14 @@ hierarchical structure
 \textit{within} an Appendix, start with \textbf{subsection} as the
 highest level. Here is an outline of the body of this
 document in Appendix-appropriate form:
-\subsection{Introduction}
-\subsection{The Body of the Paper}
-\subsubsection{Type Changes and  Special Characters}
-\subsubsection{Math Equations}
-\paragraph{Inline (In-text) Equations}
-\paragraph{Display Equations}
-\subsubsection{Citations}
-\subsubsection{Tables}
-\subsubsection{Figures}
-\subsubsection{Theorem-like Constructs}
+\subsection{Motivation}
+\subsection{Long way to Docker}
+\subsubsection{Server architecture without virtualization}
+\subsubsection{Binary virtualization}
+\subsubsection{Paravirtualization}
+\subsubsection{Hardware-assisted virtualization}
+\subsection{Docker Architecture}
+\subsection{Orchestration}
 \subsubsection*{A Caveat for the \TeX\ Expert}
 \subsection{Conclusions}
 \subsection{References}
@@ -368,19 +465,3 @@ then bibtex, then latex twice (to resolve references)
 to create the \texttt{.bbl} file.  Insert that \texttt{.bbl}
 file into the \texttt{.tex} source file and comment out
 the command \texttt{{\char'134}thebibliography}.
-% This next section command marks the start of
-
-\begin{acks}
-  The authors would like to thank Dr. Yuhua Li for providing the
-  MATLAB code of the \textit{BEPS} method.
-
-  The authors would also like to thank the anonymous referees for
-  their valuable comments and helpful suggestions. The work is
-  supported by the \grantsponsor{GS501100001809}{National Natural
-    Science Foundation of
-    China}{http://dx.doi.org/10.13039/501100001809} under Grant
-  No.:~\grantnum{GS501100001809}{61273304}
-  and~\grantnum[http://www.nnsf.cn/youngscientists]{GS501100001809}{Young
-    Scientists' Support Program}.
-
-\end{acks}

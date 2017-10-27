@@ -74,7 +74,7 @@
 %\cite{MR781536} and \cite{MR781537}.
 
 %A couple of citations with DOIs: \cite{2004:ITE:1009386.1010128,
-%  Kirschmer:2010:AEI:1958016.1958018}. 
+%  Kirschmer:2010:AEI:1958016.1958018}.
 
 
 
@@ -241,3 +241,26 @@
 %  \end{displaymath}
 %  which contradicts our assumption that $l\neq 0$.
 %\end{proof}
+
+
+
+
+\paragraph{Inline (In-text) Equations}
+\paragraph{Display Equations}
+
+% This next section command marks the start of
+
+\begin{acks}
+  The authors would like to thank Dr. Yuhua Li for providing the
+  MATLAB code of the \textit{BEPS} method.
+
+  The authors would also like to thank the anonymous referees for
+  their valuable comments and helpful suggestions. The work is
+  supported by the \grantsponsor{GS501100001809}{National Natural
+    Science Foundation of
+    China}{http://dx.doi.org/10.13039/501100001809} under Grant
+  No.:~\grantnum{GS501100001809}{61273304}
+  and~\grantnum[http://www.nnsf.cn/youngscientists]{GS501100001809}{Young
+    Scientists' Support Program}.
+
+\end{acks}
