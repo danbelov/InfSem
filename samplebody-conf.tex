@@ -30,11 +30,12 @@ of the complicated virtualized infrastructure.
 With the first release of its state-of-the-art Docker library for Linux,
 developer Solomon Hikes provided its own way of solving these problems,
 which has not only became successful startup
-with capitalization of over two billions USD as of October 2017,
+with capitalization of over one hundred eighty millions
+USD\footnote{United States Dollars} as of June 2016\cite{DockerCapitalization},
 but also a major breakthrough in the IT Field, almost pushing the existing
 businesses and startups in maintaining advanced virtualized infrastructure
 to the edge of survival or even completely eliminating
-them from the market for good.
+them from the market for good\cite{DockerImpact}.
 
 \section{Long way to Docker}
 
@@ -48,26 +49,25 @@ before the era of Docker, their advantages and disadvantages.
 
 A traditional server is just a hardware unit
 which has an operating system installed,
-which then supervises applications running.
+which then supervises applications running,
+as can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra}
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{traditional}
 \caption{Principal scheme of Data center architecture without virtualization}
 \cite{TraditionalAndVirtualInfra}
+\label{fig:TraditionalAndVirtualInfra}
 \end{figure}
 
 Though perfectly well suitable for normal user, this architecture
 has proven itself as unreliable, non-scalable,
 and generally not suitable for long-term enterprise environments support.
-
 The operating system layer was usually installed manually or with
 installation scripts specially written for that purpose,
 and the enterprise application running inside these
 environments were configured from within the OS by the system administrators.
 
-\subsection{Virtualization}
-
-\subsubsection{Invention and definition}
+\subsection{Virtualization invention and definition}
 
 At the beginning of computer era, in the year of 1964,
 computer architecture, both its hardware and software
@@ -95,18 +95,15 @@ bringing additional profit to the organization.
 Even after its invention, it was inaccessible
 for the industry mainly because of
 
-\subsubsection{Binary virtualization}
+\subsection{Binary virtualization}
 
-
-
-
-
-
+As can be derived from the Figure \ref{fig:TraditionalAndVirtualInfra1},
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{virtualized}
 \caption{Principal scheme of virtualized infrastructure}
-\cite{TraditionalAndVirtualInfra}
+\cite{TraditionalAndVirtualInfra1}
+\label{fig:TraditionalAndVirtualInfra1}
 \end{figure}
 
 \subsection{Paravirtualization}
@@ -121,32 +118,34 @@ the host CPU and thus enables virtualization on hardware architectures that do
 not support Hardware-assisted virtualization.
 However, PV guests and control domains require kernel
 support and drivers that in the past required special kernel builds,
-but are now part of the Linux kernel as well as other operating systems.\cite{ParavirtualizationDefinition}
+but are now part of the Linux kernel as well as other
+operating systems.\cite{ParavirtualizationDefinition}
 \end{definition}
 
+It is clearly shown in the Figure \ref{fig:ParavirtualizationPic}
 \begin{figure}
 \includegraphics[height=3in, width=3in]{paravirtualized}
 \caption{Principal scheme of paravirtualization initially made by Xen project}
+\cite{ParavirtualizationPic}
+\label{fig:ParavirtualizationPic}
 \end{figure}
 
-\subsubsection{Hardware-assisted virtualization}
+\subsection{Hardware-assisted virtualization}
 
 With growing demand of personal customers and commercial entities
 
 \subsection{Unsolved problems of the virtualization}
 
-
 With the brilliance of these technologies as it is,
 some of the problems never found it solutions completely:
 First of all, all of the virtual systems
-need to be updated regularly, not only for the obvious reason of security,
-but also for the sake of prolonged maintaining of deployed applications.
-Second, all the virtualized infrastructure had the
-need to be backed up regularly to
+need to be updated and backed up regularly,
+not only for the obvious reason of security,
+but also for the sake of prolonged maintaining of deployed applications and to
 prevent the loss of important business information.
 With the complexity of the infrastructures
 growing exponentially, the need for additional
-employments made an impact on the industry
+employments made an impact on the industry \cite{VirtualizationProblems}
 
 \section{Docker principles}
 
@@ -177,10 +176,21 @@ Containers and virtual machines have
 similar resource isolation and allocation benefits,
 but function differently because containers
 virtualize the operating system instead of hardware.
-Containers are more portable and efficient,
-as can be seen on the picture 3.
+Containers are believed to be more portable and
+efficient,as stated in
+the official Docker blog\cite{DockerEfficiency}
 
-\subsection{Docker architecture}
+An example of a container can be
+seen in the Figure \ref{fig:DockerContainerPic}
+
+\begin{figure}
+\includegraphics[height=3in, width=3in]{DockerContainer}
+\caption{Some examples of Docker containers}
+\cite{DockerContainerPic}
+\label{fig:DockerContainerPic}
+\end{figure}
+
+\subsection{Microarchitecture}
 
 Docker is a software product consisting mainly of a
 library written in Go programming language
@@ -195,7 +205,7 @@ were included in all standard linux kernel builds.
 Because of that, most of the current Docker function can now be simulated
 using these advanced features without installation of additional components.
 
-As can be seen in the picture *, the Docker consists
+As can be seen in the Figure \ref{fig:DockerArch}, the Docker consists
 of continous process dockerd, which then supervises other
 components using REST\footnote{Representational state transfer}
 and gets messages back from them. Docker has its
@@ -205,43 +215,59 @@ usage of REST as one of the most influencial currently implemented
 standards in the Web gives many advantages to the Docker core making it possible
 not only to connect several engines into connecting networks,
 but also to provide reliable communication between several containers running on
-one image, as it is described later
+one image, as it is described later \cite{DockerArch}
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{dockerarch}
 \caption{Scheme of Docker architecture}
+\cite{DockerArch}
+\label{fig:DockerArch}
 \end{figure}
 
 Without following advanced Linux kernel features,
-the development of Docker would not have been possible:
+the development of Docker would not have been possible
+(shown in Figure \ref{fig:DockerLinuxKernelPic}):
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{dockerLinuxKernel}
 \caption{Linux kernel features Docker containers take use of}
+\cite{DockerLinuxKernelPic}
+\label{fig:DockerLinuxKernelPic}
 \end{figure}
 
-control groups (named cgroups for the sake of simplicity) is
+\begin{enumerate}
+\item control groups (named cgroups for the sake of simplicity) is
 a feature developed by Google
 for AOSP\footnote{Android open source project} and merged
 into the Linux kernel version 2.6.24\cite{CGroupsMerged}
 which allows the kernel to restrict
-each application to the specific set of resources or allocate them —
+each application to the specific set of resources or allocate them -
 such as CPU time, system memory, network bandwidth,
-or combinations of these resources — among user-defined groups
+or combinations of these resources - among user-defined groups
 of tasks (processes) running on a system.\cite{CGroupsDefinition}
+
+An example of such resources division is
+shown on Figure \ref{fig:DockerCGroupsPic}
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{dockerCGroups}
 \caption{Example of dividing resources between Docker containers using cgroups}
+\cite{DockerCGroupsPic}
+\label{fig:DockerCGroupsPic}
 \end{figure}
 
-SELinux - a special kernel extension, which adds advanced security features to
+\item SELinux - a special kernel extension, which adds advanced security features to
 the OS, mainly fine-grained file control, but can also be applied
 for the interprocess communication and network resources. \cite{SELinuxDef}
+
+SELinux plain architecture description is
+described on the Figure \ref{fig:DockerSELinuxPic}
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{SELinux}
 \caption{SELinux architecture}
+\cite{DockerSELinuxPic}
+\label{fig:DockerSELinuxPic}
 \end{figure}
 
 This is one of the feature of the kernel, which has utter importance for Docker,
@@ -252,39 +278,130 @@ Docker employees have even described their software as being "Secure by Default"
 in their blog post \cite{SELinuxDockBlog} because of an advantageous
 usage of this technology
 
-namespaces -
+\item namespaces - a feature that is essential
+to the functioning of containers.
+For example, the PID\footnote{Process Identifier} namespace
+is what keeps processes
+in one container from seeing or interacting with processes
+in another container (or, for that matter, on the host system).
+A process might have the apparent PID 1 inside a container,
+but if examined it from the host system,
+it would have an ordinary PID
+The PID namespace is the mechanism for remapping PIDs
+inside the container. Likewise,
+there are other namespaces (e.g. net, mnt, ipc, uts)
+that (along with cgroups) provide
+the isolated environments known as containers.\cite{DockerNamespaces}
+The user namespace, then, is the mechanism
+for remapping UIDs inside a container, and this is the newest
+namespace to be implemented
+in the Docker Engine,
+starting in the version 1.10.\cite{DockerSuccessNamespaces}
 
-Netlink -
+\item netlink - provides a convenient way of communication
+between userspace and the Linux kernel space.
+Communication is made by means of casual sockets,
+but using a special protocol which is called the AF\_NETLINK.
 
-AppArmor -
+It allows one to interact with a big amount of kernel subsystems
+like routing, iptables, various interfaces, net packets filter.
+Not only that, it is made possible to communicate directly with a kernel
+module of one own implementation, provided that
+there are implemented means of handling that messages.
 
-capabilities -
+Each netlink message implements a header,
+defined as nlmsghdr structure,
+and also contains some bytes of useful load also called as a payload
+This payload can be some kind of structure, too, or it can carry raw data
+Message can be partitioned during delivery process.
+In that case each next package of a sequence has a flag NLM\_F\_MULTI,
+and the last one is sealed with the NLMSG\_DONE flag.
+For the purpose of message parsing, there is an entire macro set
+defined in the header files rtnetlink.h and netlink.h
+
+Docker has a pure implementation of netlink
+in go language that is open source for the community extensions
+and usage in private projects.
+This package can be used to create interfaces,
+bridges, set ip, mtu, and other settings on network interfaces,
+move network interfaces into different linux namespaces,
+and so on.
+This is the same code that handles creating the pairs and assigning
+an IP Address to each of containers created in Docker.
+
+\item AppArmor - kernel feature which
+\begin{definition}
+AppArmor is a Linux security module
+that protects an operating system and its applications from security threats.
+\end{definition}
+
+To use it, a system administrator associates an
+AppArmor security profile with each program.
+Docker expects to find an AppArmor policy loaded and enforced.
+
+Docker automatically generates and loads a default profile for containers
+named docker-default. On Docker versions 1.13.0 and later, the Docker
+binary generates this profile in tmpfs and then loads it into the kernel.
+On Docker versions earlier than 1.13.0, this
+profile is generated in /etc/apparmor.d/docker instead.
+
+These feature is applied on containers, not the dockerd.
+
+\item capabilities - Dockers core component, dockerd,
+requires root privileges at the time for correct work.
+However, if Docker developers made a mechanism of vaiwing this requirement on
+some types of containers, turning Linux binary (normal user or root) permissions
+approach into more than hundred different settings allowing containers
+to perform some operations without root permission for more security inside
+a container.\cite{AdrMouCapabilities:2016}
+
+\end{enumerate}
 
 Moreover, the docker library is able to determine when multiple container
 applications share the same libraries
-and provide it for them at the time needed.
-That way
+and provide it for them at the time needed.\cite{AdrMouContainersBinaries:2016}
 The main advantage of Docker is that it uses already existing features
 provided by the Linux operating system.
 
-\subsubsection{Docker Image}
+\subsection{Docker Image}
 
 To use docker, a docker image ought to be created.
 An image is compiled by docker engine itself,
 using a script file provided by user called Dockerfile.
 One of the most powerful features of docker is inheritance,
- so usual approach in the industry
+so usual approach in the industry
 is to create a base image and extend it with
 new features later when there is such a necessity.
+\begin{table}
+ \caption{Some Typical Commands}
+  \label{tab:commands}
+  \begin{tabular}{ccl}
+    \toprule
+    Command &A Number & Comments\\
+    \midrule
+    \texttt{{\char'134}author} & 100& Author \\
+    \texttt{{\char'134}table}& 300 & For tables\\
+    \texttt{{\char'134}table*}& 400& For wider tables\\
+    \bottomrule
+  \end{tabular}
+\end{table}
 A base image is extended using FROM directive like this:
 FROM: ubuntu 16.10
 Using the RUN directive, different commands supported by the base operating
 system can be passed to the container for setting up the image like this:
 RUN sudo apt-get install mariadb
+This is shown in the Figure \ref{fig:DockerFilePic}
 Moreover, the files needed by the applications can be copied directly
 into the image using the COPY directive:
 
-\subsubsection{Using a container}
+\begin{figure}
+\includegraphics[height=3in, width=3in]{DockerFile}
+\caption{Dockerfile, image and registry relationships}
+\cite{DockerFilePic}
+\label{fig:DockerFilePic}
+\end{figure}
+
+\subsection{Using a container}
 
 Once an image is created, it can be deployed into a container. A
 container in terms of docker is nothing more than a running
@@ -294,17 +411,17 @@ Created containers can be launched, stopped, and queried for their
 current state for maintenance work at will, exactly like normal virtual
 machine can be. Upon container creation it is possible to pass
 different launch parametres like an automatic restart if the server
-has been turned off by some reason.
+has been turned off by some reason.\cite{AdrMouContainerUsage:2016}
 
-\subsubsection{Union file system}
+\subsection{Union file system}
 
 While proven to reduce average CPU load and memory usage by
 eliminating the redundant duplication of the OS components of the
 virtual environments,
 unionfs (Union File System, further referred as UFS), a file system
-initially developed by and further maintained by the open source
-community, is one of the most crucial parts of docker system.
-UFS consits of “layers”, abstract file system units clearly separated
+is one of the most crucial parts of docker system.
+In terms of Docker UFS it is called "Storage Driver"\cite{AdrMouUFS:2016}
+UFS consits of "layers", abstract file system units clearly separated
 from each other, with some of them write-protected. This allows
 docker core to maintain one and the only copy of the operating
 system files necessary for its working declaring it unchangeable
@@ -313,7 +430,24 @@ unreachable from within other layers thus making it impossible to
 alter or delete them, drastically improving the security of the virtual
 environments.
 
-\subsubsection{Container registry}
+There are several underlying file systems that
+implement UFS and can be chosen as a storage
+driver in Docker\cite{AdrMouUFS:2016}:
+\begin{enumerate}
+\item AUFS
+\item Overlay
+\item BTRFS
+\item ZFS
+\item Device Mapper
+\item VFS
+\end{enumerate}
+
+Adrian Mouat advises all Docker users in his book
+to choose AUFS or Overlay as storage
+driver even despite the need
+to apply kernel updates\cite{AdrMouUFSAdvise:2016}
+
+\subsection{Container registry}
 
 As stated before in the chapter 3.1, docker image consists of multiple layers.
 It is supposed to be convenient for the end user,
@@ -328,7 +462,7 @@ a special service called Docker registry. It is a special service for uploading
 custom images or its updates in a way, that only the necessary layers will be
 downloaded by the consumers.
 
-Docker Registry is provided by docker incorporation and is available
+Docker Registry is provided by Docker Inc. and is available
 as a free public service or open-source software
 for the installation on the own infrastructure.
 That way the commercial entities, developer teams or even individuals having a
@@ -336,13 +470,52 @@ wish to hide their images from the public access
 are not bound to the usage of Docker Inc. as their unique provider, that means
 no vendor lock is present.
 
-\subsubsection{Docker on Windows}
+\subsection{Docker on Windows}
 
-In case when there is more than one container
-instance running on the docker server, it can become increasingly difficult for
-to users to maintain them.
+Docker support is integrated into a wide range of development tools
+from Microsoft, into operating systems and cloud infrastructure,
 
-\subsubsection{Container interaction}
+including the following technologies:
+\begin{enumerate}
+\item Windows Server 2016
+\item Hyper-V
+\item Visual Studio
+\item Microsoft Azure
+\end{enumerate}
+
+Embedded support of Docker containers was added in Windows Server 2016 and it
+is offered  two ways of  deploying them: Windows Server Containers and
+Hyper-V Containers, which provides additional level of
+isolation for multi-tenancy environments.
+
+In Windows, everything is arranged a bit differently in comparison with Linux.
+The architecture of most high-level components looks exactly like Linux.
+Here one can find the same Remote API, the same working tools.
+However, Windows and Linux kernels are far different.
+Microsoft is applying a slightly different approach to the design of the
+kernel than the one developed by the Linux community.
+Namely, the term "kernel mode" in Microsoft language refers not only to the
+core of the system, but also to the level of hardware abstractions, and to
+various system services.
+There are modules for managing objects, processes, memory, security,
+cache, PnP technology, power, settings, I / O operations.
+All together, this is called the Windows executive system.
+
+Kernel features in Windows do not have namespaces and control groups.
+Instead, the Microsoft team, working on the new version of Windows Server 2016,
+introduced the so-called "Compute Service Layer",
+an additional layer of services at the operating
+system level that provides namespace functions, resource management,
+and features similar to UFS.
+There is nothing on the Windows platform that corresponds
+to the dockerd and its environment.
+Instead, "Compute Service Layer" provides public interface to the container
+and is responsible for managing the containers, performing operations
+such as launching and stopping them, but it does not control their status.
+Shortly, it replaces the dockerd and
+abstracts the low-level capabilities that kernel provides.
+
+\subsection{Container interaction}
 
 Because of an architecture and restrictions of Docker, it is only possible for
 one layer to pass messages to an another layer by using ports opened for them.
@@ -353,16 +526,19 @@ chapter, is for.
 
 \section{Orchestration}
 
-\subsection{Native ecosystem}
+Orchestration is a process of setting up, controlling, updating
+and performing maintenance works of complex applications containing more than
+one container. Contrary to the virtualized environments, where this
+process is complicated and can only be automated using advanced (and mostly
+proprietary) software products, Docker offers tools for its users and customers
+which are stated to make these processes simple and convenient:
 
-
-
-\subsubsection{Docker Machine}
+\subsection{Docker Machine}
 
 With Docker Machine, one can install the Docker engine on virtualized
-hosts and manage them. One can use “Machine” to create Docker
-hosts on your local Operation System (Mac or Windows box), on your
-network, in your data center, or even on cloud Providers.
+hosts and manage them. One can use "Machine" to create Docker
+hosts on local Operation System (Mac or Windows box), on a
+network, in a data center, or even on cloud Providers.
 One can start, stop, inspect and restart a managed host
 with the docker-machine commands, upgrade the Docker client/daemon, and
 even configure a Docker client to talk to your host. There are different
@@ -375,7 +551,7 @@ Docker Machine is mainly used for two broad use cases.
 
 If one works primarily on an older Mac or Windows that
 does not meet the requirements for the new Docker apps,
-Docker Machine is needed in order to “run Docker” locally.
+Docker Machine is needed in order to "run Docker" locally.
 If one wants to provision Docker hosts on remote systems.
 If one wants an efficient way to provision multiple Docker hosts on a network,
 in the cloud or locally, Docker Machine is needed.
@@ -383,35 +559,95 @@ Independently form the used Operating System, one can install
 Docker Machine on it and use the provisioned commands to manage
 large numbers of Docker hosts. It automatically creates hosts,
 installs Docker Engine on them and eventually
-configures the docker clients. In the end, each managed
+configures the docker clients, as shown schematically on the
+Figure \ref{fig:DockerMachinePic} In the end, each managed
 host(Machine) is the combination of a Docker host and a configured client.
 
-\subsubsection{Docker Swarm}
+\begin{figure}
+\includegraphics[height=3in, width=3in]{DockerMachine}
+\caption{Docker Machine scheme}
+\cite{DockerMachinePic}
+\label{fig:DockerMachinePic}
+\end{figure}
+
+\subsection{Docker Compose}
+
+Docker Compose is a Docker service which can start,
+stop or hold on complex docker infrastructures
+containing more than one container with exposed port
+just like if it were a normal application.\cite{DockerCompose}
+
+Some examples of such applications
+can be LAMP\footnote{Linux Apache MySQL PHP} Stack
+or JEE\footnote{Java Enterprise Edition} Framework
+implementations like EAS\footnote{Enterprise Application Server}
+Glassfish, WildFly or Mojarra, as these software
+complexes use multi-tier architecture, where a database server is
+started separately from the enterprise application server,
+but ought to be used and maintained as a single application.
+
+Docker compose requires special configuration file called
+docker-compose.yml shown on Figure \ref{fig:DockerComposeFilePic}
+for the environment setup
+as well as the Dockerfiles of all of the
+containers to configure them according to the users
+preferences defined in these files previously.\cite{DockerCompose}
+
+\begin{figure}
+\includegraphics[height=3in, width=3in]{DockerComposeExample}
+\caption{Example of Docker Compose configuration file}
+\cite{DockerComposeFilePic}
+\label{fig:DockerComposeFilePic}
+\end{figure}
+
+As stated in the Docker documentation, Compose is especially
+fit for development environments,
+automated test enviroments and continous integration
+
+\subsection{Docker Swarm}
 
 Basically, Docker Swarm is a clustering tool for Docker Containers.
 Docker Swarm enables Users a straight forward opportunity,
-to merge multiple Docker hosts into a cluster.
-The behaviour of swarm is the same as a Docker-Daemon.
+to merge multiple Docker hosts into a cluster.\cite{DockerSwarmDefinition}
+The behaviour of swarm is the same as a dockerd.
 Clustering is an important feature of container technologies,
 because it creates a cooperative group of systems.
-With that, one can provide redundancy. A Docker Swarm cluster also provides the
-ability to add or substract container iterations as computing demands change.
+With that, one can provide redundancy.
+A Docker Swarm cluster also provides the
+ability to add or substract container iterations as computing demands change
+as can be seen in the Figure \ref{fig:DockerSwarmPic}
 A Swarm consist of a manager (also called Master) and
 as many slaves (also called workers) as wanted.
 The Swarm-Manager is responsible for the scheduling
 of containers on all slaves and is the primary
-interface to access on the resources of the cluster.
+interface to access on the resources of the cluster.\cite{DockerSwarmKeyConcepts}
 Docker swarm load balancing
 With Swarm one can achieve greater performance and
 better usability of resources, since it uses
 scheduling capabilities to ensure sufficient resources for
 the containers inside the cluster. This technology ensures that containers
 are launched/run on systems with adequate resources, while maintaining
-necessary performance levels.
+necessary performance levels.\cite{DockerSwarmHowNodesWork}
 
-\subsubsection{Docker Compose}
+\begin{figure}
+\includegraphics[height=3in, width=3in]{DockerSwarm}
+\caption{Docker Swarm architecture}
+\cite{DockerSwarmPic}
+\label{fig:DockerSwarmPic}
+\end{figure}
 
-\subsection{Kubernetes}
+\subsection{Kubernetes support}
+
+It is worth mentioning,
+that Docker will start
+supporting its main rival in the Orchestration field, Kubernetes,
+which is much more popular amongst clients and developers as Docker Swarm,
+in its Enterprise Edition subscription since 17 October 2017,
+as it is explained in Docker Blog entry.\cite{DockerKubernetesSupport}
+
+The overview of this orchestration tool, its advantages and disadvantages
+and the comparison with Docker Swarm, is, however, not a part of
+this research paper.
 
 \section{Conclusions}
 
@@ -424,7 +660,8 @@ increases security of the deployed application,
 because the possibly infected software cannot
 escape its file system layer and has no direct access
 to the operating system where the docker process is running, and is
-especially usable for shipping software images to the different types of customers,
+especially usable for shipping software
+images to the different types of customers,
 from the most inexperienced ones to hardcore professionals.
 
 The approach has drawbacks, too, mainly
@@ -433,35 +670,29 @@ and it is pretty hard for industry to find
 a sufficient amount of system administrators or special
 administering software qualified to support advanced docker infrastructures.
 
-
-
 \appendix
 %Appendix A
-\section{Headings in Appendices}
-The rules about hierarchical headings discussed above for
-the body of the article are different in the appendices.
-In the \textbf{appendix} environment, the command
-\textbf{section} is used to
-indicate the start of each Appendix, with alphabetic order
-designation (i.e., the first is A, the second B, etc.) and
-a title (if you include one).  So, if you need
-hierarchical structure
-\textit{within} an Appendix, start with \textbf{subsection} as the
-highest level. Here is an outline of the body of this
-document in Appendix-appropriate form:
+\section{Contents}
 \subsection{Motivation}
 \subsection{Long way to Docker}
 \subsubsection{Server architecture without virtualization}
 \subsubsection{Binary virtualization}
 \subsubsection{Paravirtualization}
 \subsubsection{Hardware-assisted virtualization}
-\subsection{Docker Architecture}
+\subsubsection{Drawbacks of virtualization}
+\subsection{Docker architecture}
+\subsubsection{Container}
+\subsubsection{Microarchitecture}
+\subsubsection{Docker Image}
+\subsubsection{Using a container}
+\subsubsection{Union File System}
+\subsubsection{Container registry}
+\subsubsection{Docker on Windows}
+\subsubsection{Container interaction}
 \subsection{Orchestration}
-\subsubsection*{A Caveat for the \TeX\ Expert}
+\subsubsection{Docker Machine}
+\subsubsection{Docker Compose}
+\subsubsection{Docker Swarm}
+\subsubsection{Kubernetes support}
 \subsection{Conclusions}
 \subsection{References}
-Generated by bibtex from your \texttt{.bib} file.  Run latex,
-then bibtex, then latex twice (to resolve references)
-to create the \texttt{.bbl} file.  Insert that \texttt{.bbl}
-file into the \texttt{.tex} source file and comment out
-the command \texttt{{\char'134}thebibliography}.

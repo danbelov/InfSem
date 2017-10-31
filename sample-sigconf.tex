@@ -15,20 +15,18 @@
 
 
 % DOI
-\acmDOI{10.475/123_4}
+\acmDOI{}
 
 % ISBN
-\acmISBN{123-4567-24-567/08/06}
+\acmISBN{}
 
 %Conference
-\acmConference[INFORMATICS SEMINAR 2017]{Bern University of Applied Sciences}{July 2017}{Biel BE, Switzerland} 
+\acmConference[INFORMATICS SEMINAR 2017]{Bern University of Applied Sciences}{Autumn semester 2017-2018}{Biel BE, Switzerland} 
 \acmYear{2017}
 \copyrightyear{2017}
 
-
 \acmArticle{1}
 \acmPrice{0.00}
-
 
 \begin{document}
 \title{Container Technologies - Docker}
@@ -37,7 +35,6 @@
 %\subtitlenote{The full version of the author's guide is available as \texttt{acmart.pdf} document}
 
 \author{Daniil Belov}
-%\authornote{The secretary disavows any knowledge of this author's actions.}
 \affiliation{%
   \institution{Bern University of Applied Sciences}
   \streetaddress{Quellgasse 21}
@@ -48,7 +45,6 @@
 \email{daniil.belov@students.bfh.ch}
 
 \author{Jonas Nydegger}
-%\authornote{The secretary disavows any knowledge of this author's actions.}
 \affiliation{%
   \institution{Bern University of Applied Sciences}
   \streetaddress{Quellgasse 21}
@@ -58,23 +54,17 @@
 }
 \email{jonas.nydegger@students.bfh.ch}
 
-\author{Ren\'e M\"uller (Supervisor)}
-%\authornote{Project Supervisor}
-\affiliation{%
-  \institution{Bern University of Applied Sciences}
-  \streetaddress{Quellgasse 21}
-  \city{Biel/Bienne BE} 
-  \state{Switzerland} 
-  \postcode{2501}
-}
-\email{rene.mueller@bfh.ch}
-
 \begin{abstract}
 	Containers are a vital component in todays cloud environments. 
-	The deployment of applications and services inside containers is much more lightweight than using virtual machines with smaller overheads. Rather than deploying virtual machines, each containing a complete guest operating system, multiple containers effectively share a single operating system. 
-	New features in operating systems (kernel namespaces and cgoups in Linux, Hyper-V in Windows) make it possible to isolate multiple containers and to control how many system resources each of the container uses.
-	Applications can be shipped as Docker images that include all dependencies (libraries and other tools). Images can simply be created by extending one of base images in the public image repository such as dockerhub.com.
-	Large applications may be deployed over multiple containers. Containers may use services provided through other containers. Thus, for a correct operation of the application, the containers it consists of must be orchestrated accordingly. A container orchestration system such as Docker Swarm/Compose, or Kubernetes can be used to help with this.
+	The deployment of applications and services inside containers is much more lightweight than using virtual machines with smaller overheads.
+	Rather than deploying virtual machines, each containing a complete guest operating system, multiple containers effectively share a single operating system. 
+	New features in operating systems (kernel namespaces and cgoups in Linux, Hyper-V in Windows)
+	make it possible to isolate multiple containers and to control how many system resources each of the container uses.
+	Applications can be shipped as Docker images that include all dependencies (libraries and other tools). 
+	Images can simply be created by extending one of base images in the public image repository such as dockerhub.com.
+	Large applications may be deployed over multiple containers. Containers may use services provided through other containers. 
+	Thus, for a correct operation of the application, the containers it consists of must be orchestrated accordingly. 
+	A container orchestration system such as Docker Swarm/Compose, or Kubernetes can be used to help with this.
 	The goal in the seminar is to provide an overview of Docker, the basic concepts, and how it can be used.
 %ACM SIG Proceedings.\footnote{This is an abstract footnote}
 \end{abstract}
@@ -120,6 +110,7 @@
 
 \input{samplebody-conf}
 
+%\bibliographystyle{unsrt}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{sample-bibliography} 
 
