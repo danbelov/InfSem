@@ -24,7 +24,7 @@ creating large profits for cloud providers like Amazon AWS,
 Microsoft Azure and Google.
 However, the virtualization was not perfect, as any advanced technology:
 as obvious as their advantages were, it had many
-drawbacks as we will discuss in section 2.4.
+drawbacks as we will discuss in section 2.6.
 
 With the first release of its state-of-the-art Docker library for Linux,
 developer Solomon Hikes provided its own way of solving these problems,
@@ -49,7 +49,11 @@ before the era of Docker, their advantages and disadvantages.
 A traditional server is just a hardware unit
 which has an operating system installed,
 which then supervises applications running,
-as can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra}
+as can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra},
+where it becomes clear that only a single
+operating system can be executed over hardware at every single moment of time.
+This operating system is then responsible for providing multi-user access and
+application control.
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{traditional}
@@ -66,15 +70,7 @@ installation scripts specially written for that purpose,
 and the enterprise application running inside these
 environments were configured from within the OS by the system administrators.
 
-\subsection{Virtualization invention and definition}
-
-At the beginning of computer era, in the year of 1964,
-computer architecture, both its hardware and software
-parts allowed simultaneous execution of instructions only from only one user
-currently active in a system. It was not suitable for the customers, however.
-The research team got a grant from DARPA, and
-rolled out its first virtualization solutions based on a time-sharing,
-and later also on memory-sharing.
+\subsection{Virtualization definition and explanation}
 
 \begin{definition}
 Virtualization is a technology of clear and safe dividing
@@ -84,19 +80,31 @@ virtualization program is started, and some of the "guest" operating systems,
 which lifecycle is maintained and supervised by the abovementioned software.
 \end{definition}
 
-With the invention of the virtualization first as software solution,
-it has become possible for one server to serve multiple users at a time
+As can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra1},
+virtualization layer is responsible for interacting with hardware
+(It can be a Virtual Machine Monitor or a Host OS)
+Therefore, multiple operating systems can be started on top of that layer.
+These OS are then responsible for application supervision.
+
+With the invention of the virtualization,
+it has become possible for one server to
+offer its users multiple operating systems at a time
 significantly decreasing stall times and the need for excessive hardware.
 Moreover, it became possible to sell the unused
 server power to the other commercial entities or private customers,
-bringing additional profit to the organization.
-
-Even after its invention, it was inaccessible
-for the industry mainly because of
+bringing additional revenue to the organization.
 
 \subsection{Binary virtualization}
 
-As can be derived from the Figure \ref{fig:TraditionalAndVirtualInfra1},
+Binary translation is translation of code from one
+instruction set to another. There are two types of binary translation-
+static binary translation where the translation is achieved by
+converting all the source code to target
+architecture without running the code, and
+dynamic binary translation where the translation is achieved during the runtime.
+
+This approach is used in many modern
+virtualization engines like VMWare and Valgrind\cite{SWVirtPrez}.
 
 \begin{figure}
 \includegraphics[height=3in, width=3in]{virtualized}
@@ -110,7 +118,7 @@ As can be derived from the Figure \ref{fig:TraditionalAndVirtualInfra1},
 First implemented and desciribed by Xen Project,
 
 \begin{definition}
-Paravirtualization (PV) is an efficient and lightweight virtualization technique
+Paravirtualization (PV) is a virtualization technique
 introduced by the Xen Project team, later adopted by other
 virtualization solutions. PV does not require virtualization extensions from
 the host CPU and thus enables virtualization on hardware architectures that do
@@ -121,7 +129,11 @@ but are now part of the Linux kernel as well as other
 operating systems\cite{ParavirtualizationDefinition}.
 \end{definition}
 
-It is clearly shown in the Figure \ref{fig:ParavirtualizationPic}
+It is clearly shown in the Figure \ref{fig:ParavirtualizationPic}:
+Xen Backend provides its own core components, and the VM0 (or Dom0)
+kernel communicates
+with Hardware using that layer. The VM0 also provides
+its communication backend for the other virtual system (Guest OS)
 \begin{figure}
 \includegraphics[height=3in, width=3in]{paravirtualized}
 \caption{Principal scheme of paravirtualization initially made by Xen project}
@@ -131,20 +143,53 @@ It is clearly shown in the Figure \ref{fig:ParavirtualizationPic}
 
 \subsection{Hardware-assisted virtualization}
 
-With growing demand of personal customers and commercial entities
+With growing demand of personal customers
+and commercial entities for enhancing VM performance
+CPU manufacturers introduced
+their new virtualization technologies - Intel VT and AMD-V,
+a set of new instructions and, what is more important, a new privilege level:
+In the traditional x86 architecture,
+operating system kernels expect direct CPU access
+running in Ring 0, which is the most privileged level.
+With software virtualization, guest operating
+systems cannot run in Ring 0 because
+the VMM\footnote{Virtual Machine Monitor} is been executed there.
+The guest operating systems must therefore run in Ring 1,
+but because some of the instructions must still be executed in Ring 0,
+it must have been paravirtualized which resulted
+in significant performance decrease\cite{HWAssistedVirt}.
+
+With Intel VT and AMD-V, a hypervisor can then run at "Ring -1";
+so the guest operating systems can run in Ring 0.
+There is no need for paravirtualization,
+the VMM does less work, and
+the performance hit is therefore significantly reduced.
 
 \subsection{Unsolved problems of the virtualization}
 
-With the brilliance of these technologies as it is,
-some of the problems never found it solutions completely:
-First of all, all of the virtual systems
-need to be updated and backed up regularly,
-not only for the obvious reason of security,
-but also for the sake of prolonged maintaining of deployed applications and to
+Virtualization technologies have many advantages as discussed before.
+However, some issues could not be addressed by these technologies:
+\begin{enumerate}
+\item \textit{Scalability}
+
+It is hard to add VM to the clusters,
+set them up or remove in case
+of need
+
+\item \textit{Maintenance}
+
+Virtual systems need to be updated and backed up regularly,
 prevent the loss of important business information.
+With VMs, the updates need to be performed inside of Guest OS,
+what is inconvenient or, in case of a necessary virtualization layer update,
+all of the virtualized infrastructure must be stopped in order to do that.
+
+\item \textit{Additional staff and reeducation}
 With the complexity of the infrastructures
 growing exponentially, the need for additional
-employments made an impact on the industry\cite{VirtualizationProblems}.
+employments and reeducation of existing employees
+made an impact on the industry\cite{VirtualizationProblems}.
+\end{enumerate}
 
 \section{Docker principles}
 
@@ -491,6 +536,15 @@ wish to hide their images from the public access,
 are not bound to the usage of Docker Inc. as their unique provider. That means
 no vendor lock-in is present\cite{AdrMouRegistries:2016}.
 
+\subsection{Container interaction}
+
+Because of an architecture and restrictions of Docker, it is only possible for
+one layer to pass messages to an another layer by using ports opened for them.
+In case when there is more than one container
+instance running on the Docker server, it can become increasingly difficult for
+to users to maintain them. And that is what
+orchestration, described in section 4, is for.
+
 \subsection{Docker on Windows}
 
 Docker support is integrated into a wide range of development tools
@@ -518,7 +572,7 @@ Namely, the term "kernel mode" in Microsoft language refers not only to the
 core of the system, but also to the level of hardware abstractions, and to
 various system services.
 There are modules for managing objects, processes, memory, security,
-cache, PnP technology, power, settings, I / O operations.
+cache, PnP technology, power, settings, I/O operations.
 All together, this is called the Windows executive system.
 
 Kernel features in Windows do not have namespaces and control groups.
@@ -530,20 +584,36 @@ system level that provides namespace functions, resource management,
 and features similar to UFS.
 There is nothing on the Windows platform that corresponds
 to the dockerd and its environment.
-Instead, "Compute Service Layer" provides public interface to the container
+Instead, CSL provides public interface to the container
 and is responsible for managing the containers, performing operations
 such as launching and stopping them, but it does not control their status.
 It replaces the dockerd and
 abstracts the low-level capabilities that kernel provides.
 
-\subsection{Container interaction}
+\subsection{Performance of a container against VM}
 
-Because of an architecture and restrictions of Docker, it is only possible for
-one layer to pass messages to an another layer by using ports opened for them.
-In case when there is more than one container
-instance running on the Docker server, it can become increasingly difficult for
-to users to maintain them. And that is what orchestration, described in the next
-section, is for.
+On July 21, 2014 IBM released its research paper
+on performance comparison between KVM and Docker
+and got the following conclusions as a result of an
+extensive test they made\cite{IBMResearchPaperOnPerformance}:
+
+\begin{enumerate}
+\item \textit{Docker equals or
+exceeds KVM\footnote{Kernel-Based virtual machine}
+performance in every case they tested.}
+\item \textit{Both forms of virtualization have drawbacks
+when it comes to tasks with
+extensive I/O\footnote{Input/Output} load}
+\item \textit{KVM is less suitable for workloads that are latency-sensitive
+or have high I/O rates.}
+\item \textit{Docker's NAT\footnote{Network Address Translation}
+has big overhead
+for workloads with high packet rates.}
+\item \textit{Containers can also eliminate the distinction between
+IaaS and "bare metal" non-virtualized servers since
+they offer the control and isolation of VMs
+with the performance of bare metal.}
+\end{enumerate}
 
 \section{Orchestration}
 
@@ -706,6 +776,7 @@ administering software qualified to support advanced docker infrastructures.
 \subsection{Motivation}
 \subsection{Long way to Docker}
 \subsubsection{Server architecture without virtualization}
+\subsubsection{Virtualization definition and explanation}
 \subsubsection{Binary virtualization}
 \subsubsection{Paravirtualization}
 \subsubsection{Hardware-assisted virtualization}
@@ -717,8 +788,9 @@ administering software qualified to support advanced docker infrastructures.
 \subsubsection{Using a container}
 \subsubsection{Union File System}
 \subsubsection{Container registry}
-\subsubsection{Docker on Windows}
 \subsubsection{Container interaction}
+\subsubsection{Docker on Windows}
+\subsubsection{Performance of a container against VM}
 \subsection{Orchestration}
 \subsubsection{Docker Machine}
 \subsubsection{Docker Compose}
