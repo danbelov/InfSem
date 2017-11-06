@@ -2,13 +2,13 @@
 \section{Motivation}
 
 As a software engineers,
-we often came across software destributed
+we often came across software distributed
 in a form of docker containers alongside
 of traditional binary files,
-or articles comparing docker to the other kind of virtualization techniques,
-or DevOps research papers comparing the performance of cloud instances in AWS,
+articles comparing Docker to the other kind of virtualization techniques
+and DevOps research papers comparing the performance of cloud instances in AWS,
 but did not know what it was about.
-Main goal of this research for us is to provide an answer
+The main goal of this research is to provide an answer
 for an important question, whether it is worth
 to change our infrastructures
 from virtualized hardware to Docker, or stick to KVM, for example.
@@ -28,10 +28,10 @@ drawbacks as we will discuss in section 2.6.
 
 With the first release of its state-of-the-art Docker library for Linux,
 developer Solomon Hikes provided its own way of solving these problems,
-which has not only became successful startup
+which has not only became a successful startup
 with capitalization of over one hundred eighty millions
-USD\footnote{United States Dollars} as of June 2016\cite{DockerCapitalization},
-but also a major breakthrough in the IT Field, almost pushing the existing
+USD\footnote{United States Dollars} as of June 2016\cite{DockerCapitalization}.
+It also became a major breakthrough in the IT Field, almost pushing the existing
 businesses and startups in maintaining advanced virtualized infrastructure
 to the edge of survival or even completely eliminating
 them from the market for good\cite{DockerImpact}.
@@ -40,7 +40,7 @@ them from the market for good\cite{DockerImpact}.
 
 Some technologies evolved themselves from the existing ideas
 or approaches at the time of invention, and Docker is no exception.
-The aim of this section is to provide an overview of main competitive
+The aim of this section is to provide an overview of the main competitive
 technologies referenced as industry standardards
 before the era of Docker, their advantages and disadvantages.
 
@@ -48,10 +48,10 @@ before the era of Docker, their advantages and disadvantages.
 
 A traditional server is just a hardware unit
 which has an operating system installed,
-which then supervises applications running,
-as can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra},
+and then supervises applications running.
+It can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra},
 where it becomes clear that only a single
-operating system can be executed over hardware at every single moment of time.
+operating system can be executed over the hardware at every single moment of time.
 This operating system is then responsible for providing multi-user access and
 application control.
 
@@ -73,15 +73,15 @@ environments were configured from within the OS by the system administrators.
 \subsection{Virtualization definition and explanation}
 
 \begin{definition}
-Virtualization is a technology of clear and safe dividing
-of existing hardware resources amongst the "host" operating system,
+Virtualization is a technology of technology that enables sharing of
+existing hardware resources amongst the "host" operating system,
 which has a direct access to the hardware resources and where the
 virtualization program is started, and some of the "guest" operating systems,
 which lifecycle is maintained and supervised by the abovementioned software.
 \end{definition}
 
 As can be seen in the Figure \ref{fig:TraditionalAndVirtualInfra1},
-virtualization layer is responsible for interacting with hardware
+the virtualization layer is responsible for interacting with the hardware
 (It can be a Virtual Machine Monitor or a Host OS)
 Therefore, multiple operating systems can be started on top of that layer.
 These OS are then responsible for application supervision.
@@ -97,11 +97,11 @@ bringing additional revenue to the organization.
 \subsection{Binary virtualization}
 
 Binary translation is translation of code from one
-instruction set to another. There are two types of binary translation-
-static binary translation where the translation is achieved by
+instruction set to another. There are basically two types of binary translation-
+static binary translation, where the translation is achieved by
 converting all the source code to target
 architecture without running the code, and
-dynamic binary translation where the translation is achieved during the runtime.
+dynamic binary translation, where the translation is achieved during the runtime.
 
 This approach is used in many modern
 virtualization engines like VMWare and Valgrind\cite{SWVirtPrez}.
@@ -124,7 +124,7 @@ virtualization solutions. PV does not require virtualization extensions from
 the host CPU and thus enables virtualization on hardware architectures that do
 not support Hardware-assisted virtualization.
 However, PV guests and control domains require kernel
-support and drivers that in the past required special kernel builds,
+support and drivers that required special kernel builds in the past,
 but are now part of the Linux kernel as well as other
 operating systems\cite{ParavirtualizationDefinition}.
 \end{definition}
@@ -146,21 +146,22 @@ its communication backend for the other virtual system (Guest OS)
 With growing demand of personal customers
 and commercial entities for enhancing VM performance
 CPU manufacturers introduced
-their new virtualization technologies - Intel VT and AMD-V,
-a set of new instructions and, what is more important, a new privilege level:
+their new virtualization technologies - Intel VT and AMD-V.
+A set of new instructions and, what is more important, a new privilege level
+was added as well.
 In the traditional x86 architecture,
 operating system kernels expect direct CPU access
-running in Ring 0, which is the most privileged level.
+to the Ring 0, which is the most privileged level.
 With software virtualization, guest operating
 systems cannot run in Ring 0 because
-the VMM\footnote{Virtual Machine Monitor} is been executed there.
+the VMM\footnote{Virtual Machine Monitor} is being executed there.
 The guest operating systems must therefore run in Ring 1,
 but because some of the instructions must still be executed in Ring 0,
 it must have been paravirtualized which resulted
 in significant performance decrease\cite{HWAssistedVirt}.
 
-With Intel VT and AMD-V, a hypervisor can then run at "Ring -1";
-so the guest operating systems can run in Ring 0.
+With Intel VT and AMD-V, a hypervisor can then run at a "Ring -1";
+so the guest operating systems can run in the Ring 0.
 There is no need for paravirtualization,
 the VMM does less work, and
 the performance hit is therefore significantly reduced.
@@ -174,14 +175,14 @@ However, some issues could not be addressed by these technologies:
 
 It is hard to add VM to the clusters,
 set them up or remove in case
-of need
+of need.
 
 \item \textit{Maintenance}
 
-Virtual systems need to be updated and backed up regularly,
+Virtual systems need to be updated and backed up regularly to
 prevent the loss of important business information.
 With VMs, the updates need to be performed inside of Guest OS,
-what is inconvenient or, in case of a necessary virtualization layer update,
+what is inconvenient or, in case of the necessary virtualization layer update,
 all of the virtualized infrastructure must be stopped in order to do that.
 
 \item \textit{Additional staff and reeducation}
@@ -399,11 +400,8 @@ and so on.
 This is the same code that handles creating the pairs and assigning
 an IP Address to each of the containers created in Docker.
 
-\item \textbf{AppArmor} - kernel feature which
-\begin{definition}
-AppArmor is a Linux security module
+\item \textbf{AppArmor} - Linux security module
 that protects an operating system and its applications from security threats.
-\end{definition}
 
 The main advantage of it is simplicity when comparing to SELinux.
 It works by applying special profiles to the container processes,
@@ -610,7 +608,8 @@ or have high I/O rates.}
 has big overhead
 for workloads with high packet rates.}
 \item \textit{Containers can also eliminate the distinction between
-IaaS and "bare metal" non-virtualized servers since
+IaaS\footnote{Infrastructure-as-a-Service paradigm}
+and "bare metal" non-virtualized servers since
 they offer the control and isolation of VMs
 with the performance of bare metal.}
 \end{enumerate}
@@ -755,7 +754,7 @@ As a result of this research work, it became clear to us that, first of all,
 the approach of container virtualization or containerization
 is the future of software deployment, because it not only reduces complexity of
 different types of infrastructure like content delivery network,
-but also significantly reduces server load, significantly
+but also reduces server load,
 increases security of the deployed application,
 because the possibly infected software cannot
 escape its file system layer and has no direct access
@@ -764,11 +763,17 @@ especially usable for shipping software
 images to the different types of customers,
 from the most inexperienced ones to hardcore professionals.
 
-The approach has drawbacks, too, mainly
+When it comes to performance, based on the section 3.9, it exceeds
+that of a virtual machine,
+even taking a performance
+hit of container isolation problematics into account.
+Of course, the Docker approach has drawbacks, too, mainly
 because it is relatively new to the market,
 and it is pretty hard for industry to find
 a sufficient amount of system administrators or special
-administering software qualified to support advanced docker infrastructures.
+administering software qualified to support advanced docker infrastructures,
+but we are pretty sure that this technology does belong to the
+present and the future of software development and deployment.
 
 \appendix
 %Appendix A
@@ -780,7 +785,7 @@ administering software qualified to support advanced docker infrastructures.
 \subsubsection{Binary virtualization}
 \subsubsection{Paravirtualization}
 \subsubsection{Hardware-assisted virtualization}
-\subsubsection{Drawbacks of virtualization}
+\subsubsection{Unsolved problems of the virtualization}
 \subsection{Docker architecture}
 \subsubsection{Container}
 \subsubsection{Microarchitecture}

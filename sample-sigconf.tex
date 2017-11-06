@@ -1,18 +1,10 @@
 \documentclass[sigconf]{acmart}
 
-\usepackage{booktabs} % For formal tables
+\usepackage{booktabs}
 
 
 % Copyright
 \setcopyright{none}
-%\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
-%\setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
 
 % DOI
 \acmDOI{}
@@ -30,9 +22,7 @@
 
 \begin{document}
 \title{Container Technologies - Docker}
-%\titlenote{Produces the permission block, and copyright information}
 \subtitle{Informatics Seminar HS 2017}
-%\subtitlenote{The full version of the author's guide is available as \texttt{acmart.pdf} document}
 
 \author{Daniil Belov}
 \affiliation{%
@@ -56,16 +46,16 @@
 
 \begin{abstract}
 	Containers are a vital component in today's cloud environments. 
-	The deployment of applications and services inside containers is much more lightweight than using virtual machines with smaller overheads.
+	The deployment of applications and services inside containers is more lightweight and with smaller overheads than using virtual machines.
 	Rather than deploying virtual machines, each containing a complete guest operating system, multiple containers effectively share a single operating system. 
 	New features in operating systems (kernel namespaces and cgoups in Linux, Hyper-V in Windows)
 	make it possible to isolate multiple containers and to control how many system resources each of the container uses.
 	Applications can be shipped as Docker images that include all dependencies (libraries and other tools). 
-	Images can simply be created by extending one of base images in the public image repository such as dockerhub.com.
+	Images can simply be created by extending one of base images in the public image repository such as the dockerhub.com.
 	Large applications may be deployed over multiple containers. Containers may use services provided through other containers. 
 	Thus, for a correct operation of the application, the containers it consists of must be orchestrated accordingly. 
 	A container orchestration system such as Docker Swarm/Compose, or Kubernetes can be used to help with this.
-	The goal in the seminar is to provide an overview of Docker, the basic concepts, and how it can be used.
+	The goal of the seminar is to provide an overview of Docker, the basic concepts, and how it can be used.
 %ACM SIG Proceedings.\footnote{This is an abstract footnote}
 \end{abstract}
 
