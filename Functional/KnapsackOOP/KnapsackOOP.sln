@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnapsackOOP", "KnapsackOOP\KnapsackOOP.csproj", "{A74198D2-9744-4C84-A0C9-3B8CF88AA0DB}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "KnapsackFunctional", "KnapsackFunctional\KnapsackFunctional.fsproj", "{3E947E16-2F2C-495A-9C3A-3F4FB9AF96CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A74198D2-9744-4C84-A0C9-3B8CF88AA0DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74198D2-9744-4C84-A0C9-3B8CF88AA0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74198D2-9744-4C84-A0C9-3B8CF88AA0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74198D2-9744-4C84-A0C9-3B8CF88AA0DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E947E16-2F2C-495A-9C3A-3F4FB9AF96CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E947E16-2F2C-495A-9C3A-3F4FB9AF96CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E947E16-2F2C-495A-9C3A-3F4FB9AF96CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E947E16-2F2C-495A-9C3A-3F4FB9AF96CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E609F54F-3FD2-46C6-9D8C-36FB02D98F64}
+	EndGlobalSection
+EndGlobal
