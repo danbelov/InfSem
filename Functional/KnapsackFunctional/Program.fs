@@ -1,5 +1,15 @@
-﻿// Learn more about F# at http://fsharp.org
+﻿open System
+
+// Learn more about F# at http://fsharp.org
 // See the 'F# Tutorial' project for more help.
+
+type Item = 
+    { 
+      id: Guid
+      Name: string
+      Weight: float
+      Value: float 
+    }
 
 [<EntryPoint>]
 let main argv = 

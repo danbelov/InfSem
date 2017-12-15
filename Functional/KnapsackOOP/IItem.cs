@@ -8,8 +8,7 @@ namespace KnapsackOOP
     {
             Guid Id { get; set; }
             string Name { get; set; }
-            int Square { get; set; }
+            int Weight { get; set; }
             int Value { get; set; }
-            int Quantity { get; set; }
     }
 }
