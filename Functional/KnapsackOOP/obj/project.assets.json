@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\RSQLAPTOP\\Documents\\MEGAsync\\5HS\\infsem\\InfSem\\Functional\\KnapsackOOP\\KnapsackOOP\\KnapsackOOP.csproj",
+      "projectUniqueName": "C:\\Users\\RSQLAPTOP\\Documents\\MEGAsync\\5HS\\infsem\\InfSem\\Functional\\KnapsackOOP\\KnapsackOOP.csproj",
       "projectName": "KnapsackOOP",
-      "projectPath": "C:\\Users\\RSQLAPTOP\\Documents\\MEGAsync\\5HS\\infsem\\InfSem\\Functional\\KnapsackOOP\\KnapsackOOP\\KnapsackOOP.csproj",
+      "projectPath": "C:\\Users\\RSQLAPTOP\\Documents\\MEGAsync\\5HS\\infsem\\InfSem\\Functional\\KnapsackOOP\\KnapsackOOP.csproj",
       "packagesPath": "C:\\Users\\RSQLAPTOP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RSQLAPTOP\\Documents\\MEGAsync\\5HS\\infsem\\InfSem\\Functional\\KnapsackOOP\\KnapsackOOP\\obj\\",
+      "outputPath": "C:\\Users\\RSQLAPTOP\\Documents\\MEGAsync\\5HS\\infsem\\InfSem\\Functional\\KnapsackOOP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
