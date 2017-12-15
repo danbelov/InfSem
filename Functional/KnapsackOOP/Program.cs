@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KnapsackOOP
 {
-    class Program
+    internal class Program
     {
         /* 
          * This is a
@@ -29,9 +30,9 @@ namespace KnapsackOOP
          * A14 - 1
          * A15 - 1
          */
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            int maxWeight = 750;
+            const int maxCapacity = 750;
             ICollection<Item> testItems = new List<Item>
             {
                 new Item { Name = "A1", Weight = 70, Value = 135 },
@@ -50,7 +51,19 @@ namespace KnapsackOOP
                 new Item { Name = "A14", Weight = 118, Value = 229 },
                 new Item { Name = "A15", Weight = 120, Value = 240 }
             };
-            Console.WriteLine("Hello World!");
+            var knapsack = new Knapsack(maxCapacity);
+            Console.WriteLine("Initial state:");
+            foreach (var testItem in testItems)
+            {
+                Console.WriteLine(testItem.ToString());
+            }
+            Console.WriteLine("Solution:");
+            var solution = knapsack.CalculateSuggestion(testItems.ToList());
+            solution.All(x => {
+                Console.WriteLine(x);
+                return true;
+            });
+            Console.ReadKey();
         }
     }
 }

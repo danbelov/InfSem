@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KnapsackOOP
 {
-    interface IItem
+    internal interface IItem
     {
             Guid Id { get; set; }
             string Name { get; set; }

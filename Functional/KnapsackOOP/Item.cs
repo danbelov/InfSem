@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KnapsackOOP
 {
-    class Item : IItem, IEquatable<Item>
+    internal class Item : IItem, IEquatable<Item>
     {
         public Guid Id { get; set; }
 
