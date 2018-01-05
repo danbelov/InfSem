@@ -1,0 +1,40 @@
+\documentclass[sigplan]{acmart}
+
+%Conference
+\acmConference[Berner Fachhochschule'18]{Informatik Seminar}{Januar 2018}{Biel, Switzerland} 
+
+\usepackage{enumitem}
+\usepackage{color}
+
+\newlist{MyIndentedList}{itemize}{4}
+\setlist[MyIndentedList,1]{%
+    label={},
+    noitemsep,
+    leftmargin=0pt,
+    }
+\setlist[MyIndentedList]{%
+    label={},
+    noitemsep,
+    }
+
+\begin{document}
+\title{Functional Programming}
+\subtitle{A brief introducation into functional programming}
+\author{Daniil Belov, Jonas Nydegger}
+\graphicspath{ {images/} }
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+\begin{abstract}
+
+\end{abstract}
+
+\keywords{Keyword1, keyword2, keyword3}
+
+\maketitle
+
+\input{samplebody-conf}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample-bibliography} 
+
+\end{document}
