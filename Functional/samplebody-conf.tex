@@ -1,5 +1,44 @@
 \section{Motivation}
-During the history of computer science, object oriented programming has emerged as the most common programming paradigm to work with. There are good reasons, why OOP is used that frequent because the reusability and encapsulation. But everyone who had to implement mathematical functions into runnable code with this paradigm knows, that it has its difficulties. Another problem is concurrency and debbuging. If one ever had to check the state of a single variable in a larger code snippet line by line knows how much time and nerves this can take. Furhter complications arise, if one tries to delete elements out of a collection inside a loop and gets a concurrency error. Things like this can be time-consuming. Also parallel programming has its pitfalls because of the different states and modifications of Objects. And this is where one can see the benefits of functional programming. In this programming paradigm, amongst other things, variables are immutable and functions stateless. Additionally the usage of higher order functions(will be explained later) encourages parallel programming. Thanks to that, it is possible to transparently generate concurrency and one does not have to worry about variable changes.\\
+
+Since its invention in mid-1980s,
+functional programming and its principles and mathematical grounds behind it 
+gained popularity in many spheres of the world because 
+it provided reliable and efficient way to 
+handle tasks subject to many concurrent requests.
+
+But during our studies we never had a chance to try this paradigm out before,
+sticking to Object-oriented programming. 
+Our goal in this project was to choose an algorithm that should be not so complicated to understand,
+implement the algorithm in Object-oriented language and Functional language and present our conclusions in this research paper.
+
+
+
+\section{Introduction}
+During the history of computer science, 
+object oriented programming has emerged as the most 
+common programming paradigm to work with. 
+There are good reasons, why OOP is used that frequent 
+because the reusability and encapsulation. 
+But everyone who had to implement 
+mathematical functions into runnable 
+code with this paradigm knows, that it has its difficulties. 
+Another problem is concurrency and debbuging. 
+If one ever had to check the state of a single 
+variable in a larger code snippet line by line 
+knows how much time and nerves this can take. 
+Furhter complications arise, 
+if one tries to delete elements out of a 
+collection inside a loop and gets a concurrency error. 
+Things like this can be time-consuming. 
+Also parallel programming has its pitfalls because of the different 
+states and modifications of Objects. 
+And this is where one can see the benefits of functional programming. 
+In this programming paradigm, amongst other things, 
+variables are immutable and functions stateless. 
+Additionally the usage of higher order functions(will be explained later) 
+encourages parallel programming. 
+Thanks to that, it is possible to transparently 
+generate concurrency and one does not have to worry about variable changes.\\
 \section{Functional Programming}
 Functional Programming is a fundamentally  different way of thinking about how we want to apply the abstraction principle. Functional Programming is a Programming paradigm, were Functions not only can be defined and applied, but also linked together, set as parameters or as return values of functions.\\
 A lot of well known programming languages own partial features of the functional programming paradigm. For instance in PHP or JavaScript, one can work with Higher order Functions(explained later). Nevertheless, neither PHP nor JavaScript are declared as functional programming languages. Because of that, one has to differentiate between pure functional programming languages and impure ones.\\
@@ -167,7 +206,7 @@ The implementation of the knapsack algorithm in Erlang is more complex. If one h
 Code from whole Erlang Program with necessary Comments\\
 \textbf{run-time complexity}\\
 Insert text here.\\
-Inser text here.\\
+Insert text here.\\
 
 \subsubsection{Comparison}
 \textbf{Object Oriented}\\
@@ -186,3 +225,52 @@ As one can see, recursion is the key in this solution.
 
 
 \section{Conclusions}
+
+After performing the task of implementing an algorithm for this 
+research paper we came to a conclusion that, first of all, there 
+was an entire programming paradigm with its philosophy, patterns,logic and followers 
+that we never had a chance to come across before. 
+
+And the functional paradigm is not something theoretical,
+that has been used in scientific labs only, but is also used for 
+concurrent real-world applications in branches like telecommunication, 
+distributed computing, real-time processing and so on.
+
+It is even used to build enterprise-grade servers like JavaEE, 
+where the implementations of the specifications 
+ought to make special concurrent pools 
+with high-level synchronization methods like monitors,
+barriers and semaphores. 
+But unlike it, functional servers are able to handle 
+concurrency by design and produce an error with less probability.
+
+We also made a research of technological stacks Erlang has to offer.
+The technology stack of Erlang language is modern, comparable to that of object-oriented
+languages, and even outperforming them sometimes. 
+Exactly like Java, Erlang has a lot of high-quality community-driven analogs to offer,
+for example Rebar3, 
+project management tool, 
+or mnesia, which provides persistence layer to the advanced applications.
+Our program did not take advantage of that, but it was great to know it exists.
+
+For people like us which were familiar with the Object-Oriented paradigm before only,
+functional programming was a complex challenge to understand, 
+because there is a slight difference in almost all programming aspects,
+from syntax to programming patterns,
+with one of the most significant differences in data types: 
+Java offered us multidimensional arrays,
+collections framework, 
+but the only things Erlang offers are List, Record and Tuple ADTs.
+Of course, there were community driven 
+implementations of Collections ADTs in Erlang, 
+but there was implicitly stated, that we should 
+prefer standard Erlang recommended approach instead.
+
+For the purpose of this research and our personal interest, 
+we deepened our knowledge of knapsack problem and its variations,
+in particular the 0-1 knapsack problem, and learned how to solve it in Java
+using two-dimensional arrays and in Erlang using recursive operations on immutable lists.
+  
+Not only that, we gained experience with one of the most important principles of Erlang, 
+pattern matching used by the language itself to distinguish between different conditions
+in order of the function execution.
