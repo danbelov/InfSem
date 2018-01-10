@@ -96,12 +96,12 @@ calculate_solution([], _TotalWeight, SelectedItemsCollection, AccumulatedValue, 
 % we are trying to put into knapsack fits at all.  
 calculate_solution([{_Item, ItemWeight, _ItemValue} | T], TotalWeight, SelectedItemsCollection, AccumulatedValue, AccumulatedWeight) 
 % If not (weight of a current item we are trying to add exceeds the weight of the knapsack), 
-% take one more element from the tail and try to fit it in the solution
+% pass the other elements (except for this one) of the list to recursion the tail and try to fit it in the solution
 when ItemWeight > TotalWeight -> calculate_solution(T, TotalWeight, SelectedItemsCollection, AccumulatedValue, AccumulatedWeight);
 
 % Because Erlang List ADT provides us only with access on its Head and Tail element,
-% we need to determine which element is more profitable to take
-% Upon matching with a non-empty list count the possible solutions on head and Tail 
+% we need to determine which elements are more profitable to take
+% Upon matching with a non-empty list count the possible solutions on the head and the tail 
 % and return it to the next recursion level.
 % Important : IF statement does not function as in Java or C#. It MUST have a return value, and in this case, 
 % "true" means "else".
