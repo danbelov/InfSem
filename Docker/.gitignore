@@ -25,3 +25,4 @@ sample-*.pdf
 *.zip
 *.rpi
 *~
+*.gz
