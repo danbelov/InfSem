@@ -1,8 +1,9 @@
 # InfSem
 
-Repository for the Informatik seminar work 
+Repository for the research papers written during "Computer science seminar" subject at the Bern University of Applied Sciences 
 
-written by the two students of the Bern University of Applied Sciences, Daniil Belov and Jonas Nydegger.
+written by the two students of the abovementioned university, Daniil Belov and Jonas Nydegger.
+
 
 To build the file, use any Latex client (i used MikTeX) on docker_build.tex
 
